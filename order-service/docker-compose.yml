@@ -1,0 +1,17 @@
+version: "4"
+services:
+  mysql:
+    image: mysql:8.3.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      # ! ./mysql => створиться папка на локалій машині, там де заходиться docker-compose
+      # ! /var/lib/mysql => папка всередині контейнера
+      # ! Щоб усі дані бази зберігалися на хості, навіть якщо контейнер буде видалено або перезапущено.
+      - ./mysql:/var/lib/mysql
+      # ! ./docker/mysql/init.sql => файл на локалій машині
+      # ! /docker-entrypoint-initdb.d => копіюємо в папку, яку контейнер перевіряє при запуску і запускає звідси файли
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
