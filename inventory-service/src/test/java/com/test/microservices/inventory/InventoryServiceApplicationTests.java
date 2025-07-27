@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class InventoryServiceApplicationTests {
 
     @Container
-    static MySQLContainer mySQLContainer = (MySQLContainer) new MySQLContainer("mysql:8.3.0")
+    static MySQLContainer<?> mySQLContainer = new MySQLContainer<>("mysql:8.3.0")
             .withDatabaseName("inventory_service")
             .withUsername("root")
             .withPassword("mysql")

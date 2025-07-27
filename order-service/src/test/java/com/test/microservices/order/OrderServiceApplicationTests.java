@@ -1,5 +1,6 @@
 package com.test.microservices.order;
 
+import com.test.microservices.order.stubs.InventoryClientStub;
 import io.restassured.RestAssured;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,15 +8,25 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
 import org.testcontainers.containers.MySQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
+@Testcontainers  // 🔧 важливо: активує lifecycle контейнера
+@AutoConfigureWireMock(port = 0) // ! wiremock for inventory service http call
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class OrderServiceApplicationTests {
 
+    @Container // 🔄 гарантує автоматичний старт/зупинку
     @ServiceConnection
-    static MySQLContainer mySQLContainer = new MySQLContainer("mysql:8.3.0");
+    static MySQLContainer<?> mySQLContainer = new MySQLContainer<>("mysql:8.3.0")
+            .withDatabaseName("order_service")
+            .withUsername("root")
+            .withPassword("mysql")
+            .withReuse(false);
 
     @LocalServerPort
     private Integer port;
@@ -24,10 +35,6 @@ class OrderServiceApplicationTests {
     void setup() {
         RestAssured.baseURI = "http://localhost";
         RestAssured.port = port;
-    }
-
-    static {
-        mySQLContainer.start();
     }
 
     @Test
@@ -39,6 +46,8 @@ class OrderServiceApplicationTests {
                      "quantity": 1
                 }
                 """;
+
+        InventoryClientStub.stubInventoryCall("iphone_15", 1);
 
         var responseBodyString = RestAssured.given()
                 .contentType("application/json")
