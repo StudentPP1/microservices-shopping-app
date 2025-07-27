@@ -1,7 +1,6 @@
-create table `t_inventory`
+CREATE TABLE t_inventory
 (
-    `id` bigint(20) not null auto_increment,
-    `sku_code` varchar(255) default null,
-    `quantity` int(11) default null,
-    primary key (`id`)
+    id BIGSERIAL PRIMARY KEY,
+    sku_code VARCHAR(255) NULL,
+    quantity INTEGER NULL
 );

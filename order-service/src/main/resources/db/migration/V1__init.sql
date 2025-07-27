@@ -1,9 +1,7 @@
-create table `t_orders`
-(
-    `id` bigint(20) not null auto_increment,
-    `order_number` varchar(255) default null,
-    `sku_code` varchar(255),
-    `price` decimal(19, 2),
-    `quantity` int(11),
-    primary key (`id`)
+CREATE TABLE t_orders (
+    id BIGSERIAL PRIMARY KEY,
+    order_number VARCHAR(255),
+    sku_code VARCHAR(255),
+    price NUMERIC(19, 2),
+    quantity INTEGER
 );

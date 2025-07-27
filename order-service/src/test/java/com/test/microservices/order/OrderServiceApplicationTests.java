@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
-import org.testcontainers.containers.MySQLContainer;
+import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
@@ -22,11 +22,7 @@ class OrderServiceApplicationTests {
 
     @Container // 🔄 гарантує автоматичний старт/зупинку
     @ServiceConnection
-    static MySQLContainer<?> mySQLContainer = new MySQLContainer<>("mysql:8.3.0")
-            .withDatabaseName("order_service")
-            .withUsername("root")
-            .withPassword("mysql")
-            .withReuse(false);
+    static PostgreSQLContainer<?> container = new PostgreSQLContainer<>("postgres:latest");
 
     @LocalServerPort
     private Integer port;

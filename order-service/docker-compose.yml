@@ -1,17 +1,19 @@
 version: "4"
 services:
-  mysql:
-    image: mysql:8.3.0
+  postgres:
+    image: postgres:latest
     container_name: order-service-db
     environment:
-      MYSQL_ROOT_PASSWORD: mysql
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: order_service
     ports:
-      - "3306:3306"
+      - "5432:5432"
     volumes:
-      # ! ./mysql => створиться папка на локалій машині, там де заходиться docker-compose
-      # ! /var/lib/mysql => папка всередині контейнера
+      # ! ./postgres => створиться папка на локалій машині, там де заходиться docker-compose
+      # ! /var/lib/postgres => папка всередині контейнера
       # ! Щоб усі дані бази зберігалися на хості, навіть якщо контейнер буде видалено або перезапущено.
-      - ./mysql:/var/lib/mysql
-      # ! ./docker/mysql/init.sql => файл на локалій машині
-      # ! /docker-entrypoint-initdb.d => копіюємо в папку, яку контейнер перевіряє при запуску і запускає звідси файли
-      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./postgres:/var/lib/postgres
+      # ./docker/mysql/init.sql => файл на локалій машині
+      # /docker-entrypoint-initdb.d => копіюємо в папку, яку контейнер перевіряє при запуску і запускає звідси файли
+      # - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql

@@ -1,12 +1,16 @@
 version: "4"
 services:
-  mysql:
-    image: mysql:8.3.0
+  postgres:
+    image: postgres:latest
     container_name: inventory-service-db
     environment:
-      MYSQL_ROOT_PASSWORD: mysql
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: inventory_service
     ports:
-      - "3316:3306" # поменяли внутренний порт, что бы избежать конфликта с order-service-db
+      - "5442:5432" # поменяли внутренний порт, что бы избежать конфликта с order-service-db
     volumes:
-      - ./mysql:/var/lib/mysql
-      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      # ! ./postgres => створиться папка на локалій машині, там де заходиться docker-compose
+      # ! /var/lib/postgres => папка всередині контейнера
+      # ! Щоб усі дані бази зберігалися на хості, навіть якщо контейнер буде видалено або перезапущено.
+      - ./postgres:/var/lib/postgres
