@@ -98,6 +98,12 @@
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.8.9</version>
         </dependency>
+<!--  ! connect to swagger of this service by rest api -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
+            <version>2.8.9</version>
+        </dependency>
     </dependencies>
 
     <build>
