@@ -1,5 +1,7 @@
 package com.test.microservices.product.service;
 
+import com.test.microservices.product.client.InventoryClient;
+import com.test.microservices.product.dto.InventoryProduct;
 import com.test.microservices.product.dto.ProductRequest;
 import com.test.microservices.product.dto.ProductResponse;
 import com.test.microservices.product.model.Product;
@@ -15,7 +17,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ProductService {
-
+    private final InventoryClient inventoryClient;
     private final ProductRepository productRepository;
     private static final Logger log = LoggerFactory.getLogger(ProductService.class);
 
@@ -24,8 +26,10 @@ public class ProductService {
                 .name(productRequest.name())
                 .description(productRequest.description())
                 .price(productRequest.price())
+                .skuCode(productRequest.skuCode())
                 .build();
         product = productRepository.save(product);
+        inventoryClient.addProductToInventory(new InventoryProduct(productRequest.skuCode(), productRequest.quantity()));
         log.info("Product {} has been created", product);
         return new ProductResponse(product.getId(), product.getName(), product.getDescription(), product.getPrice());
     }

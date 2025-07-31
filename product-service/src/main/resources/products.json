@@ -1,0 +1,20 @@
+[
+  {
+    "name": "iPhone 15",
+    "description": "Apple phone",
+    "price": 999.99,
+    "skuCode": "iphone_15"
+  },
+  {
+    "name": "Pixel 8",
+    "description": "Google phone",
+    "price": 799.99,
+    "skuCode": "pixel_8"
+  },
+  {
+    "name": "Galaxy S24",
+    "description": "Samsung phone",
+    "price": 899.99,
+    "skuCode": "galaxy_24"
+  }
+]

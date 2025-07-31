@@ -25,6 +25,7 @@ public class Routes {
         // http() — функція-обробник, що проксуює запит на сервіс через Spring Cloud Gateway
         return route("product_service")
                 .GET("/api/product", http())
+                .POST("/api/product", http())
                 .filter(CircuitBreakerFilterFunctions.circuitBreaker(
                         "productServiceCircuitBreaker",
                         URI.create("forward:/fallbackRoute") // if request error we redirect to fallback
@@ -51,6 +52,7 @@ public class Routes {
     public RouterFunction<ServerResponse> inventoryServiceRoute() {
         return route("inventory_service")
                 .GET("/api/inventory", http())
+                .POST("/api/inventory/add", http())
                 .filter(CircuitBreakerFilterFunctions.circuitBreaker(
                                 "inventoryServiceCircuitBreaker",
                                 URI.create("forward:/fallbackRoute") // if request error we redirect to fallback
