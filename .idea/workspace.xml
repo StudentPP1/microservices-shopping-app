@@ -5,40 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69a8a8b0-9b0a-47b7-8375-b0b89830776b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/microservice-shopping-app.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/test/microservices/apigateway/routes/Routes.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/test/microservices/apigateway/routes/Routes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/test/microservices/inventory/controller/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/test/microservices/inventory/controller/InventoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/test/microservices/inventory/model/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/test/microservices/inventory/model/Inventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/test/microservices/inventory/repository/InventoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/test/microservices/inventory/repository/InventoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/test/microservices/inventory/service/InventoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/test/microservices/inventory/service/InventoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/test/microservices/order/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/java/com/test/microservices/order/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/test/microservices/product/ProductServiceApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/test/microservices/product/config/OpenAPIConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/test/microservices/product/controller/ProductController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/test/microservices/product/dto/ProductRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/test/microservices/product/dto/ProductResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/test/microservices/product/model/Product.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/test/microservices/product/repository/ProductRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/test/microservices/product/service/ProductService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/test/java/com/test/microservices/product/ProductServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +57,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
@@ -98,6 +66,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.ApiGatewayApplication.executor": "Run",
     "Spring Boot.InventoryServiceApplication.executor": "Run",
     "Spring Boot.OrderServiceApplication.executor": "Run",

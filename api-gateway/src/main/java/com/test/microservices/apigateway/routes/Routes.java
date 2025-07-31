@@ -24,8 +24,8 @@ public class Routes {
     public RouterFunction<ServerResponse> productServiceRoute() {
         // http() — функція-обробник, що проксуює запит на сервіс через Spring Cloud Gateway
         return route("product_service")
-                .GET("/api/product", http())
-                .POST("/api/product", http())
+                .GET("/api/product", http()) // ! get all products
+                .POST("/api/product", http()) // ! create product
                 .filter(CircuitBreakerFilterFunctions.circuitBreaker(
                         "productServiceCircuitBreaker",
                         URI.create("forward:/fallbackRoute") // if request error we redirect to fallback
@@ -38,7 +38,7 @@ public class Routes {
     @Bean
     public RouterFunction<ServerResponse> orderServiceRoute() {
         return route("order_service")
-                .POST("/api/order", http())
+                .POST("/api/order", http()) // ! place order
                 .filter(CircuitBreakerFilterFunctions.circuitBreaker(
                                 "orderServiceCircuitBreaker",
                                 URI.create("forward:/fallbackRoute") // if request error we redirect to fallback
