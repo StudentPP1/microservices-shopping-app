@@ -10,10 +10,10 @@ services:
     ports:
       - "5432:5432"
     volumes:
+      - ./postgres:/var/lib/postgres
       # ! ./postgres => створиться папка на локалій машині, там де заходиться docker-compose
       # ! /var/lib/postgres => папка всередині контейнера
       # ! Щоб усі дані бази зберігалися на хості, навіть якщо контейнер буде видалено або перезапущено.
-      - ./postgres:/var/lib/postgres
       # ./docker/mysql/init.sql => файл на локалій машині
       # /docker-entrypoint-initdb.d => копіюємо в папку, яку контейнер перевіряє при запуску і запускає звідси файли
       # - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
