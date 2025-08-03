@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69a8a8b0-9b0a-47b7-8375-b0b89830776b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]1/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory-service/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,8 +48,7 @@
     </option>
   </component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 0
+  &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="30dYsepB5478RIDX3DRQXZ4tl7D" />
   <component name="ProjectViewState">
@@ -67,9 +58,13 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Docker.api-gateway: Compose Deployment.executor": "Run",
     "Docker.inventory-service: Compose Deployment.executor": "Run",
     "Docker.order-service: Compose Deployment.executor": "Run",
+    "Docker.product-service: Compose Deployment.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found": "Database connection parameters found",
+    "Notification.DoNotAsk-DatabaseConfigFileWatcher.found": "true",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -84,7 +79,7 @@
     "Spring Boot.ProductServiceApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "E:/Projects/java/test/microservices-shopping-app/product-service/src/main/resources",
+    "last_opened_file_path": "E:/Project/java/test/microservices-shopping-app",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -94,7 +89,7 @@
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.0",
     "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Color Scheme Font",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -123,7 +118,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Docker.order-service: Compose Deployment">
+  <component name="RunManager" selected="Docker.product-service: Compose Deployment">
     <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="api-gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.test.microservices.apigateway.ApiGatewayApplication" />
@@ -153,7 +148,17 @@
       </method>
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml" />
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="api-gateway: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="api-gateway/docker-compose.yml" />
+        </settings>
+      </deployment>
       <method v="2" />
     </configuration>
     <configuration name="inventory-service: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
@@ -172,10 +177,20 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="product-service: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="product-service/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.product-service: Compose Deployment" />
         <item itemvalue="Docker.order-service: Compose Deployment" />
         <item itemvalue="Docker.inventory-service: Compose Deployment" />
+        <item itemvalue="Docker.api-gateway: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -198,7 +213,16 @@
       <workItem from="1753959926774" duration="7856000" />
       <workItem from="1753987070765" duration="183000" />
       <workItem from="1754061454064" duration="1532000" />
-      <workItem from="1754074103660" duration="651000" />
+      <workItem from="1754074103660" duration="2005000" />
+      <workItem from="1754097000479" duration="50000" />
+      <workItem from="1754248653497" duration="655000" />
+      <workItem from="1754249378887" duration="32000" />
+      <workItem from="1754249420677" duration="62000" />
+      <workItem from="1754249493537" duration="74000" />
+      <workItem from="1754249577806" duration="30000" />
+      <workItem from="1754249707039" duration="562000" />
+      <workItem from="1754250300961" duration="164000" />
+      <workItem from="1754251986690" duration="280000" />
     </task>
     <servers />
   </component>
@@ -215,5 +239,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
