@@ -24,6 +24,11 @@ function App() {
     skuCode: "",
     quantity: 1,
     price: 0,
+    userDetails: {
+      email: "",
+      firstName: "",
+      lastName: "",
+    },
   });
 
   const [inventoryStatus, setInventoryStatus] = useState<string | null>(null);
@@ -48,10 +53,21 @@ function App() {
 
   const handleOrderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setOrderForm((prev) => ({
-      ...prev,
-      [name]: name === "price" || name === "quantity" ? +value : value,
-    }));
+
+    if (["email", "firstName", "lastName"].includes(name)) {
+      setOrderForm((prev) => ({
+        ...prev,
+        userDetails: {
+          ...prev.userDetails,
+          [name]: value,
+        },
+      }));
+    } else {
+      setOrderForm((prev) => ({
+        ...prev,
+        [name]: name === "price" || name === "quantity" ? +value : value,
+      }));
+    }
   };
 
   const createProduct = () => {
@@ -124,6 +140,30 @@ function App() {
         name="price"
         placeholder="price"
         value={orderForm.price}
+        onChange={handleOrderChange}
+        style={{ margin: "0.5rem", padding: "0.5rem" }}
+      />
+      <input
+        type="text"
+        name="email"
+        placeholder="email"
+        value={orderForm.userDetails.email}
+        onChange={handleOrderChange}
+        style={{ margin: "0.5rem", padding: "0.5rem" }}
+      />
+      <input
+        type="text"
+        name="firstName"
+        placeholder="first name"
+        value={orderForm.userDetails.firstName}
+        onChange={handleOrderChange}
+        style={{ margin: "0.5rem", padding: "0.5rem" }}
+      />
+      <input
+        type="text"
+        name="lastName"
+        placeholder="last name"
+        value={orderForm.userDetails.lastName}
         onChange={handleOrderChange}
         style={{ margin: "0.5rem", padding: "0.5rem" }}
       />
