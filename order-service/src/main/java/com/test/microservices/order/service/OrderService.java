@@ -31,11 +31,12 @@ public class OrderService {
             order.setSkuCode(orderRequest.skuCode());
             order.setQuantity(orderRequest.quantity());
             orderRepository.save(order);
-            // TODO: refresh front-end
             // send the message to Kafka Topic: orderNumber & email
             OrderPlacedEvent orderPlacedEvent = new OrderPlacedEvent(
                     order.getOrderNumber(),
-                    orderRequest.userDetails().email()
+                    orderRequest.userDetails().email(),
+                    orderRequest.userDetails().firstName(),
+                    orderRequest.userDetails().lastName()
             );
             log.info("Start -> send order placed event {} to topic order-placed", orderPlacedEvent);
             kafkaTemplate.send("order-placed", orderPlacedEvent);
