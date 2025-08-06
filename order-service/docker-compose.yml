@@ -32,7 +32,7 @@ services:
       # до какого места дочитали в топиках (offset) и тд
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
-  schema-registry:
+  schema-registry: # allow not duplicate message class type in two services
     image: confluentinc/cp-schema-registry:7.5.0
     hostname: schema-registry
     container_name: schema-registry
@@ -42,8 +42,8 @@ services:
       - "8085:8081"
     environment:
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
-      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'broker:29092'
-      SCHEMA_REGISTRY_LISTENERS: http://schema-registry:8081
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'broker:29092' # соединение с брокером
+      SCHEMA_REGISTRY_LISTENERS: http://schema-registry:8081 # expose listen port
 
   kafka-ui: # юзер интерфейс для просмотра информации внутри брокера
     container_name: kafka-ui

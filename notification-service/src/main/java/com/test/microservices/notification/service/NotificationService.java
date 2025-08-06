@@ -25,8 +25,11 @@ public class NotificationService {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
             // body and data of message
             messageHelper.setFrom("springshop@email.com");
-            messageHelper.setTo(event.getEmail());
-            messageHelper.setSubject(String.format("Your Order with OrderNumber %s is placed successfully", event.getOrderNumber()));
+            messageHelper.setTo(event.getEmail().toString());
+            messageHelper.setSubject(String.format(
+                    "Your Order with OrderNumber %s is placed successfully",
+                    event.getOrderNumber().toString()
+            ));
             messageHelper.setText(String.format("""
                             Hi %s,%s
 
@@ -35,14 +38,14 @@ public class NotificationService {
                             Best Regards
                             Spring Shop
                             """,
-                    event.getFirstName(),
-                    event.getLastName(),
-                    event.getOrderNumber()));
+                    event.getFirstName().toString(),
+                    event.getLastName().toString(),
+                    event.getOrderNumber().toString()));
         };
         // send and validate
         try {
             javaMailSender.send(messagePreparator);
-            log.info("Order Notification email sent!!");
+            log.info("Order Notification email sent!");
         } catch (MailException e) {
             log.error("Exception occurred when sending mail", e);
             throw new RuntimeException("Exception occurred when sending mail to springshop@email.com", e);
