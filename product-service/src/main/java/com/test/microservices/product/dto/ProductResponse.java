@@ -6,6 +6,7 @@ public record ProductResponse(
         String id,
         String name,
         String description,
-        BigDecimal price
+        BigDecimal price,
+        String skuCode
 ) {
 }

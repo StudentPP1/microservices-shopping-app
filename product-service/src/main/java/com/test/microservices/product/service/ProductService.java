@@ -31,12 +31,22 @@ public class ProductService {
         product = productRepository.save(product);
         inventoryClient.addProductToInventory(new InventoryProduct(productRequest.skuCode(), productRequest.quantity()));
         log.info("Product {} has been created", product);
-        return new ProductResponse(product.getId(), product.getName(), product.getDescription(), product.getPrice());
+        return mapToProductResponse(product);
     }
 
     public List<ProductResponse> getAllProducts() {
-        return productRepository.findAll().stream().map(
-                p -> new ProductResponse(p.getId(), p.getName(), p.getDescription(), p.getPrice())
-        ).toList();
+        return productRepository.findAll().stream()
+                .map(this::mapToProductResponse)
+                .toList();
+    }
+
+    private ProductResponse mapToProductResponse(Product product) {
+        return new ProductResponse(
+                product.getId(),
+                product.getName(),
+                product.getDescription(),
+                product.getPrice(),
+                product.getSkuCode()
+        );
     }
 }

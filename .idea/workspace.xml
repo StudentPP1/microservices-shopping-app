@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2a3dfc1-cb0c-4629-8a06-66c586473be2" name="Changes" comment="feat: add notification service &#10;&#10;Consume messages from kafka topic and send to email server">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notification-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/test/microservices/notification/service/NotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/test/microservices/notification/service/NotificationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/test/microservices/order/event/OrderPlacedEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notification-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/test/microservices/order/event/OrderPlacedEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/resources/application.properties" afterDir="false" />
+    <list default="true" id="c2a3dfc1-cb0c-4629-8a06-66c586473be2" name="Changes" comment="feat: remove duplicate OrderPlacedEvent &amp; add schema registry for kafka">
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/api.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/keycloak.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +180,7 @@
       <option name="presentableId" value="Default" />
       <updated>1754400787869</updated>
       <workItem from="1754400788473" duration="4546000" />
-      <workItem from="1754481952401" duration="4473000" />
+      <workItem from="1754481952401" duration="5126000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add notification service &#10;&#10;Consume messages from kafka topic and send to email server">
       <option name="closed" value="true" />
@@ -195,7 +190,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754405157284</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: remove duplicate OrderPlacedEvent &amp; add schema registry for kafka">
+      <option name="closed" value="true" />
+      <created>1754487289328</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1754487289328</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,6 +206,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: add notification service &#10;&#10;Consume messages from kafka topic and send to email server" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add notification service &#10;&#10;Consume messages from kafka topic and send to email server" />
+    <MESSAGE value="feat: remove duplicate OrderPlacedEvent &amp; add schema registry for kafka" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: remove duplicate OrderPlacedEvent &amp; add schema registry for kafka" />
   </component>
 </project>
