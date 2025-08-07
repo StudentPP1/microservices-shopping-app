@@ -1,6 +1,8 @@
 package com.test.microservices.product.config;
 
 import com.test.microservices.product.client.InventoryClient;
+import io.micrometer.observation.ObservationRegistry;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +13,9 @@ import org.springframework.web.client.support.RestClientAdapter;
 import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 
 @Configuration
+@RequiredArgsConstructor
 public class RestClientConfig {
+    private final ObservationRegistry observationRegistry;
 
     // ! if a lot of => use @ConfigurationProperties class
     @Value("${inventory.url}")
@@ -24,6 +28,7 @@ public class RestClientConfig {
         RestClient restClient = RestClient.builder()
                 .baseUrl(inventoryServiceUrl)
                 .requestFactory(requestFactory())
+                .observationRegistry(observationRegistry)
                 .build();
         // ! bind RestClient to InventoryClient interface
         var restClientAdapter = RestClientAdapter.create(restClient);

@@ -12,7 +12,7 @@ public class SecurityConfig {
     private final String[] freeResourceUrls = {
             "/swagger-ui.html", "/swagger-ui/**",
             "/v3/api-docs/**", "/swagger-resources/**",
-            "/api-docs/**", "/aggregate/**",
+            "/api-docs/**", "/aggregate/**", "/actuator/prometheus",
     };
 
     // ! default jwt & all endpoints are secured => config API Gateway as a resource server
