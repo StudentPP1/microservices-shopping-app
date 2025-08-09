@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: inventory-service-db
+  name: inventory-service-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inventory-service-db
+  template:
+    metadata:
+      labels:
+        app: inventory-service-db
+    spec:
+      containers:
+        - image: postgres:latest
+          name: postgres
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  key: postgres_user
+                  name: inventory-service-db-secrets
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: postgres_password
+                  name: inventory-service-db-secrets
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  key: postgres_db
+                  name: inventory-service-db-secrets
+          volumeMounts:
+              - mountPath: /var/lib/postgres
+                name: inventory-service-db-data
+      volumes:
+        - name: inventory-service-db-data
+          persistentVolumeClaim:
+            claimName: inventory-service-db-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: inventory-service-db
+  name: inventory-service-db
+spec:
+  ports:
+    - port: 5442  # зовнішній порт всередині кластера => kubectl port-forward svc/order-service-db 5442:5442
+      targetPort: 5432 # порт у контейнері
+      protocol: TCP
+  selector:
+    app: inventory-service-db
+  type: ClusterIP
+---
+apiVersion: v1
+data:
+  postgres_db: aW52ZW50b3J5X3NlcnZpY2U=
+  postgres_password: cG9zdGdyZXM=
+  postgres_user: cG9zdGdyZXM=
+kind: Secret
+metadata:
+  name: inventory-service-db-secrets
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: inventory-service-db-pv
+spec:
+  storageClassName: 'standard'
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /inventory-service-db
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: inventory-service-db-pvc
+spec:
+  storageClassName: 'standard'
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

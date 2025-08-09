@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: order-service-db
+  name: order-service-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order-service-db
+  template:
+    metadata:
+      labels:
+        app: order-service-db
+    spec:
+      containers:
+        - image: postgres:latest
+          name: postgres
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  key: postgres_user
+                  name: order-service-db-secrets
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: postgres_password
+                  name: order-service-db-secrets
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  key: postgres_db
+                  name: order-service-db-secrets
+          volumeMounts:
+              - mountPath: /var/lib/postgres
+                name: order-service-db-data
+      volumes:
+        - name: order-service-db-data
+          persistentVolumeClaim:
+            claimName: order-service-db-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: order-service-db
+  name: order-service-db
+spec:
+  ports:
+    - port: 5432
+      protocol: TCP
+      targetPort: 5432
+  selector:
+    app: order-service-db
+  type: ClusterIP
+---
+apiVersion: v1
+data:
+  postgres_db: b3JkZXJfc2VydmljZQ==
+  postgres_password: cG9zdGdyZXM=
+  postgres_user: cG9zdGdyZXM=
+kind: Secret
+metadata:
+  name: order-service-db-secrets
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: order-service-db-pv
+spec:
+  storageClassName: 'standard'
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /order-service-db
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: order-service-db-pvc
+spec:
+  storageClassName: 'standard'
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
