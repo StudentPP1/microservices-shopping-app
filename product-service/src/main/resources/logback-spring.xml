@@ -4,12 +4,13 @@
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <!-- property for identify logs by app name -->
     <springProperty scope="context" name="appName" source="spring.application.name"/>
+    <springProperty scope="context" name="lokiUrl" source="loki.url"/>
 
     <!-- send logs to loki -->
     <appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">
         <http>
             <!-- the same port as in docker at api-gateway -->
-            <url>http://localhost:3100/loki/api/v1/push</url>
+            <url>${lokiUrl}</url>
         </http>
         <format>
             <label>

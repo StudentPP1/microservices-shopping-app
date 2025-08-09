@@ -1,5 +1,6 @@
 package com.test.microservices.apigateway.routes;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.server.mvc.filter.CircuitBreakerFilterFunctions;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,14 @@ import static org.springframework.cloud.gateway.server.mvc.handler.HandlerFuncti
 @Configuration
 public class Routes {
     // define all routes
+    @Value("${product.service.url}")
+    private String productServiceUrl;
+
+    @Value("${order.service.url}")
+    private String orderServiceUrl;
+
+    @Value("${inventory.service.url}")
+    private String inventoryServiceUrl;
 
     // function style of definite endpoints
     @Bean
@@ -31,7 +40,7 @@ public class Routes {
                         URI.create("forward:/fallbackRoute") // if request error we redirect to fallback
                         )
                 )
-                .before(uri("http://localhost:8080"))
+                .before(uri(productServiceUrl))
                 .build();
     }
 
@@ -44,7 +53,7 @@ public class Routes {
                                 URI.create("forward:/fallbackRoute") // if request error we redirect to fallback
                         )
                 )
-                .before(uri("http://localhost:8081"))
+                .before(uri(orderServiceUrl))
                 .build();
     }
 
@@ -58,7 +67,7 @@ public class Routes {
                                 URI.create("forward:/fallbackRoute") // if request error we redirect to fallback
                         )
                 )
-                .before(uri("http://localhost:8082"))
+                .before(uri(inventoryServiceUrl))
                 .build();
     }
 
@@ -72,7 +81,7 @@ public class Routes {
                         )
                 )
                 .filter(setPath("/api-docs")) // ! /aggregate/product-service/v3/api-docs -> /api-docs
-                .before(uri("http://localhost:8080")) // ! add prefix
+                .before(uri(productServiceUrl)) // ! add prefix
                 .build();
     }
 
@@ -86,7 +95,7 @@ public class Routes {
                         )
                 )
                 .filter(setPath("/api-docs"))
-                .before(uri("http://localhost:8081"))
+                .before(uri(orderServiceUrl))
                 .build();
     }
 
@@ -100,7 +109,7 @@ public class Routes {
                         )
                 )
                 .filter(setPath("/api-docs"))
-                .before(uri("http://localhost:8082"))
+                .before(uri(inventoryServiceUrl))
                 .build();
     }
 

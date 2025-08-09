@@ -18,7 +18,7 @@ public class RestClientConfig {
     private final ObservationRegistry observationRegistry;
 
     // ! if a lot of => use @ConfigurationProperties class
-    @Value("${inventory.url}")
+    @Value("${inventory.service.url}")
     private String inventoryServiceUrl;
 
     // ! realization of interface for calling inventory service
