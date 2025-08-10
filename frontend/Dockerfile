@@ -1,11 +1,20 @@
-# stage 1: build project
-FROM node:22 AS build
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
+FROM node AS vite-app
 
-# stage 2: run nginx server
+WORKDIR /app/client
+COPY ./client .
+
+RUN npm install && npm run build
+
 FROM nginx:alpine
-COPY --from=build /app/dist/ /usr/share/nginx/html
+
+WORKDIR /usr/share/nginx/
+
+RUN rm -rf html && \
+    mkdir html
+
+WORKDIR /
+
+COPY ./nginx/nginx.conf /etc/nginx
+COPY --from=vite-app ./app/client/dist /usr/share/nginx/html
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
