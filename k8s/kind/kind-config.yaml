@@ -3,26 +3,9 @@ apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
   - role: control-plane
     extraPortMappings:
-      # мапимо ХОСТ:80 -> НОДА:30080 і ХОСТ:443 -> НОДА:30443
       - containerPort: 30080
         hostPort: 80
         protocol: TCP
       - containerPort: 30443
         hostPort: 443
         protocol: TCP
-# cd k8s/kind
-# kind create cluster --config kind-config.yaml
-# helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-# helm repo update
-#  helm upgrade --install nginx-ing ingress-nginx/ingress-nginx `
-#  -n ingress-nginx --create-namespace `
-#  --set controller.service.type=NodePort `
-#  --set controller.service.nodePorts.http=30080 `
-#  --set controller.service.nodePorts.https=30443 `
-#  --atomic --wait
-# cd ..
-# cd manifests
-# kubectl apply -f infrastructure
-# kubectl apply -f applications
-# kubectl get pods -n ingress-nginx
-# kubectl get ingress
